@@ -1,0 +1,24 @@
+{{ define "news" }}
+    <div class="page">
+        {{ template "header" }}
+        <div class="pink-section">
+            <div class="header-container">
+                <h3 class="box-header pink-header">News</h3>
+            </div>
+            <section class="news-reel">
+                <div class="news-post">
+                    <h3 class="news-header">
+                        IN MEMORIAM by "The Team" - 1/26/15 @ 12:30AM EST
+                        <span class="news-hash blue-text-link">#</span>
+                    </h3>
+                    <div class="news-image-container">
+                        <a class="news-image-link" href="/static/images/news/rip_moot_2015.jpg" target="_blank">
+                            <img class="news-image" src="/static/images/news/rip_moot_2015.jpg" alt="RIP Moot" title="RIP Moot" />
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        {{ template "main-footer" }}
+    </div>
+{{ end }}

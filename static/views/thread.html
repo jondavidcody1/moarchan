@@ -1,0 +1,131 @@
+{{ define "thread" }}
+    {{ template "top" }}
+        <div class="new-post-container">
+            <p class="new-post">[<span class="blue-text-link">Post a Reply</span>]</p>
+            <form class="new-post-form hide">
+                <div class="new-post-field-row">
+                    <label class="new-post-label" for="new-post-name">Name</label>
+                    <input id="new-post-name" class="new-post-input" type="text" name="Name" />
+                </div>
+                <div class="new-post-field-row">
+                    <label class="new-post-label" for="new-post-options">Options</label>
+                    <input id="new-post-options" class="new-post-input" type="text" name="Options" />
+                    <button id="new-post-button" class="new-post-button grey-button" name="new-post-button" type="button">Post</button>
+                </div>
+                <div class="new-post-field-row">
+                    <label class="new-post-label" for="new-post-comment">Comment</label>
+                    <textarea id="new-post-comment" class="new-post-input" rows="auto" cols="auto"></textarea>
+                </div>
+                <div class="new-post-field-row">
+                    <label class="new-post-label" for="new-post-verification">Verification</label>
+                    <input id="new-post-verification" class="new-post-input" type="text" name="Comment" />
+                </div>
+                <div class="new-post-field-row">
+                    <label class="new-post-label" for="new-post-file">File</label>
+                    <input id="new-post-file" class="new-post-file-input" type="file" />
+                </div>
+                <ol class="new-post-bullets">
+                    <li>Please read the Rules and FAQ before posting.</li>
+                    <li>Maximum file size allowed is 8192 KB.</li>
+                    <li>Images greater than 10000x10000 pixels are not allowed.</li>
+                </ol>
+            </form>
+        </div>
+        {{ template "blotter" }}
+        <p class="support-moarchan">Please <span data-rt-href="/support" class="blue-text-link">support Moarchan</span> by disabling your ad blocker on *.moarchan.org/*, <span data-rt-href="/self-serve" class="blue-text-link">purchasing a self-serve ad</span>, or <span data-rt-href="/pass" class="blue-text-link">buying a moarchan Pass.</span></p>
+        <div class="top-container">
+            <input class="search-ops" type="text" placeholder="Search OPs..." />
+            <p class="catalog-link">[<span data-rt-href="/catalog" class="blue-text-link">Catalog</span>]</p>
+        </div>
+        <div class="board">
+            {{ range . }}
+            <div id="post-{{ .hash }}" class="thread">
+                <div class="post-image-metadata op">
+                    File: <a class="post-image-link blue-text-link op" href="/static/images/uploads/{{ .file_name }}" alt="{{ .file_name }}" title="{{ .file_name }}" target="_blank">{{ .file_name }}</a>
+                    <span class="post-image-dimensions op">({{ .file_size }} KB, {{ .file_dimensions }})</span>
+                </div>
+                <a class="post-image-container op" href="/static/images/uploads/{{ .file_name }}" target="_blank">
+                    <img class="post-image op" src="/static/images/uploads/{{ .file_name }}" alt="{{ .file_name }}" title="{{ .file_name }}" />
+                </a>
+                <div class="post-header op">
+                    <input class="post-checkbox op" type="checkbox" />
+                    <span class="post-subject op">{{ .subject }}</span>
+                    <span class="post-username op">{{ .name }}</span>
+                    <span class="post-date op">{{ .timestamp }}</span>
+                    <span class="post-link-to red-text-link op" title="Link to this post">No.</span>
+                    <span class="post-reply-to red-text-link op" title="Reply to this post" data-thread="{{ .hash }}">{{ .hash }}</span>
+                    <img class="post-thumbtack op" src="/static/images/thumbtack.gif" alt="Sticky" title="Sticky" />
+                    <img class="post-lock op" src="/static/images/lock.gif" alt="Closed" title="Closed" />
+                    <div class="post-options op" title="Post menu">
+                        <span class="post-options-arrow op" data-post="{{ .hash }}"></span>
+                        <ul id="post-menu-{{ .hash }}" class="post-options-menu hide op">
+                            <li class="report-post op" data-post="{{ .hash }}">Report Thread</li>
+                            <li class="image-search op" data-post="{{ .hash }}">Image Search &gt;&gt;</li>
+                        </ul>
+                    </div>
+                    {{ range .taggedBy }}
+                    <span class="post-tag blue-text-link op" data-tag="{{ . }}">&gt;&gt;{{ . }}</span>
+                    {{ end }}
+                </div>
+                <div class="thread-container">
+                    <p class="post-content op">{{ .comment }}</p>
+                    {{ range .replies }}
+                    <div class="reply-container">
+                        <div class="reply-wrapper">
+                            <span class="post-side-arrows">&gt;&gt;</span>
+                            <div id="post-{{ .hash }}" class="reply">
+                                <div class="post-header">
+                                    <input class="post-checkbox" type="checkbox" />
+                                    <span class="post-username">{{ .name }}</span>
+                                    <span class="post-date">{{ .timestamp }}</span>
+                                    <span class="post-link-to red-text-link" title="Link to this post">No.</span>
+                                    <span class="post-reply-to red-text-link" title="Reply to this post" data-thread="{{ .thread }}">{{ .hash }}</span>
+                                    <div class="post-options" title="Post menu">
+                                        <span class="post-options-arrow" data-post="{{ .hash }}"></span>
+                                        <ul id="post-menu-{{ .hash }}" class="post-options-menu hide">
+                                            <li class="report-post" data-post="{{ .hash }}">Report Post</li>
+                                            <li class="hide-post" data-post="{{ .hash }}">Hide Post</li>
+                                            <li class="unhide-post" data-post="{{ .hash }}">Unhide Post</li>
+                                            {{ if .file_name }}
+                                            <li class="image-search" data-post="{{ .hash }}">Image Search &gt;&gt;</li>
+                                            {{ end }}
+                                        </ul>
+                                    </div>
+                                    {{ range .taggedBy }}
+                                    <span class="post-tag blue-text-link" data-tag="{{ . }}">&gt;&gt;{{ . }}</span>
+                                    {{ end }}
+                                </div>
+                                {{ if .file_name }}
+                                <div class="post-image-metadata">
+                                    File: <a class="post-image-link blue-text-link" href="/static/images/uploads/{{ .file_name }}" alt="{{ .file_name }}" title="{{ .file_name }}" target="_blank">{{ .file_name }}</a>
+                                    <span class="post-image-dimensions">({{ .file_size }} KB, {{ .file_dimensions }})</span>
+                                </div>
+                                <a class="post-image-container" href="/static/images/uploads/{{ .file_name }}" target="_blank">
+                                    <img class="post-image" src="/static/images/uploads/{{ .file_name }}" title="{{ .file_name }}" alt="{{ .file_name }}" />
+                                </a>
+                                {{ end }}
+                                <p class="post-content">{{ .comment }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+                <div class="spacer"></div>
+            </div>
+            {{ end }}
+        </div>
+        <div class="bottom-container">
+            <div class="bottom-right-side">
+                Delete Post: [
+                <input class="file-only" type="checkbox" name="file-only">
+                File Only]
+                <button class="delete grey-button" type="button" name="delete">Delete</button>
+                Style:
+                <select class="select-style grey-button" name="style">
+                    <option value="Yotsuba">Yotsuba</option>
+                    <option value="Yotsuba B">Yotsuba B</option>
+                </select>
+            </div>
+        </div>
+        {{ template "boards-footer" }}
+{{ end }}

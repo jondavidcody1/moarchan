@@ -1,0 +1,64 @@
+{{ define "base" }}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="author" content="" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        <link href="/static/css/reset.css" rel="stylesheet" type="text/css" />
+        <link href="/static/css/fonts/roboto/roboto.css" rel="stylesheet" type="text/css" />
+        <link href="/static/css/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+        <link href="/static/css/login.css" rel="stylesheet" type="text/css" />
+        <link href="/static/css/screen.css" rel="stylesheet" type="text/css" />
+        <title>RTGo | Base</title>
+    </head>
+    <body>
+        <div class="form-container fade-down-paused">
+            <form class="form hide" name="login" action="/login" method="post" enctype="multipart/form-data">
+                <h3 class="form-header">
+                    LOGIN
+                    <span class="form-close">x</span>
+                </h3>
+                <hr class="form-header-underline" />
+                <div class="form-input-container">
+                    <span class="form-input-icon fa fa-user"></span>
+                    <input class="form-input" name="username" type="text" placeholder="name" />
+                </div>
+                <div class="form-input-container">
+                    <span class="form-input-icon fa fa-lock"></span>
+                    <input class="form-input" name="password" type="password" placeholder="password" />
+                </div>
+                <button class="form-button" type="button" data-form="login">Submit</button>
+            </form>
+            <form class="form hide" name="register" action="/register" method="post" enctype="multipart/form-data">
+                <h3 class="form-header">
+                    REGISTER
+                    <span class="form-close">x</span>
+                </h3>
+                <hr class="form-header-underline" />
+                <div class="form-input-container">
+                    <span class="form-input-icon fa fa-user"></span>
+                    <input class="form-input" name="username" type="text" placeholder="name" />
+                </div>
+                <div class="form-input-container">
+                    <span class="form-input-icon fa fa-envelope"></span>
+                    <input class="form-input" name="email" type="text" placeholder="email" />
+                </div>
+                <div class="form-input-container">
+                    <span class="form-input-icon fa fa-lock"></span>
+                    <input class="form-input" name="password" type="password" placeholder="password" />
+                </div>
+                <button class="form-button" type="button" data-form="register">Submit</button>
+            </form>
+        </div>
+        <div data-rt-view=""></div>
+        <script type="application/javascript" src="/static/js/sjcl.js"></script>
+        <script type="application/javascript" src="/static/js/rtgo.js"></script>
+        <script type="application/javascript" src="/static/js/gg.js"></script>
+        <script type="application/javascript" src="/static/js/controllers/main.js"></script>
+        <script type="application/javascript" src="/static/js/controllers/service.js"></script>
+    </body>
+</html>
+{{ end }}

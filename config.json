@@ -1,0 +1,61 @@
+{
+    "port": "8080",
+    "hashkey": "mysecret",
+    "blockkey": "moresecret",
+    "cookiename": "moarchan",
+    "database": {
+        "riak": {
+            "host": "127.0.0.1",
+            "port": "8087",
+            "tables": "users,main,a,b,c,d,e,f,g,gif,h,hr,k,m,o,p,r,s,t,u,v,vr,w,wg,i,ic,r9k,s4s,cm,hm,lgbt,y,3,adv,an,asp,biz,cgi,ck,co,diy,fa,fit,gd,hc,int,jp,lit,mlp,mu,n,out,po,pol,sci,soc,sp,tg,toy,trv,tv,vp,wsg,x"
+        }
+    },
+    "routes": {
+        "^/([A-Za-z0-9]*)/thread/([A-Za-z0-9]*)$": {
+            "table": "$1",
+            "key": "$2",
+            "template": "thread",
+            "controllers": "service"
+        },
+        "^/([A-Za-z0-9]*)[\/]?$": {
+            "table": "$1",
+            "template": "topic",
+            "controllers": "service"
+        },
+        "/": {
+            "table": "main",
+            "template": "main",
+            "controllers": "main"
+        },
+        "/news": {
+            "template": "news"
+        },
+        "/blog": {
+            "template": "blog"
+        },
+        "/faq": {
+            "template": "faq"
+        },
+        "/rules": {
+            "template": "rules"
+        },
+        "/advertise": {
+            "template": "advertise"
+        },
+        "/press": {
+            "template": "press"
+        },
+        "/about": {
+            "template": "about"
+        },
+        "/feedback": {
+            "template": "feedback"
+        },
+        "/legal": {
+            "template": "legal"
+        },
+        "/contact": {
+            "template": "contact"
+        }
+    }
+}

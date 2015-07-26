@@ -1,0 +1,263 @@
+.form-container {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 110%;
+    top: -5%;
+    z-index: 9999;
+    background: rgba(0,0,0,0.3);
+}
+.form {
+    position: relative;
+    background: linear-gradient(#555, #444);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255,255,255,0.3) rgba(0,0,0,0.1) rgba(0,0,0,0.3) rgba(255,255,255,0.1);
+    border-radius: 6px;
+    box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.9);
+    display: block;
+    margin: 100px auto 0;
+    padding-bottom: 30px;
+    position: relative;
+    width: 400px;
+    overflow: hidden;
+}
+.form.hide {
+    display: none;
+}
+.form-header {
+    color: #FFF;
+    display: block;
+    font-size: 21px;
+    font-weight: bold;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    text-shadow: -1px -1px 0 #3F3F3F;
+    vertical-align: middle;
+    width: 370px;
+}
+.form-close {
+    cursor: pointer;
+    opacity: 0.6;
+    position: absolute;
+    right: 12px;
+    top: 6px;
+    text-shadow: -1px -1px 0 #3F3F3F;
+    transition: all 200ms ease-in-out;
+}
+.form-close:hover {
+    opacity: 1;
+}
+.form-header-underline {
+    background: #333;
+    box-shadow: 0 1px 0 0 #666, 0 -1px 0 0 #000;
+    display: block;
+    height: 1px;
+    margin-bottom: 30px;
+    vertical-align: middle;
+}
+.form-input-container {
+    background: #333;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #111 #555 #666 #222;
+    border-radius: 4px;
+    box-shadow: 0px 0px 3px 0 rgba(0,0,0,0.3) inset;
+    color: #FFF;
+    display: block;
+    margin: 0 auto 12px;
+    padding: 3px 3px 4px;
+    position: relative;
+    text-align: center;
+    text-shadow: -1px -1px 0 #222;
+    width: 300px;
+}
+.form-input {
+    display: inline-block;
+    font-size: 16px;
+    font-family: roboto;
+    line-height: 2;
+    vertical-align: middle;
+    width: 250px;
+}
+.form-input-icon {
+    display: inline-block;
+    font-size: 21px;
+    margin-right: 9px;
+    vertical-align: middle;
+    width: 21px;
+    text-shadow: 0 0 0px #000;
+}
+.form-button {
+    background: #0077aa;
+    background: linear-gradient(to bottom, #07a, #069);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255,255,255,0.2) rgba(0,0,0,0.1) rgba(0,0,0,0.2) rgba(255,255,255,0.1);
+    box-shadow: 0 0 1px 0 #111;
+    color: #EEE;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    height: 38px;
+    line-height: 36px;
+    margin: 21px auto 0;
+    position: relative;
+    text-shadow: -1px -1px 0 #069;
+    width: 270px;
+}
+.form-button:active {
+    background: #006699;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.1) rgba(255,255,255,0) rgba(255,255,255,0.05) rgba(0,0,0,0.1);
+    box-shadow: 0 0 2px 0 #222;
+    color: #CCC;
+    line-height: 38px;
+}
+
+
+
+/*
+ ==============================
+ ANIMATIONS
+ ==============================
+ */
+
+.form-input-icon.glow {
+    animation: glow 1s linear 0s infinite alternate none running;
+    -webkit-animation: glow 1s linear 0s infinite alternate none running;
+}
+.form-input-container.fail {
+    animation: failure 1s linear 0s 4 alternate none running;
+    -webkit-animation: failure 1s linear 0s 4 alternate none running;
+}
+@-webkit-keyframes glow {
+    from {
+        color: #FFF;
+        text-shadow: 0 0 0px #000;
+    }
+    to {
+        color: #9EF; 
+        text-shadow: 0 0 6px #000;
+    }
+}
+@keyframes glow {
+    from {
+        color: #FFF;
+        text-shadow: 0 0 0px #000;
+    }
+    to {
+        color: #9EF; 
+        text-shadow: 0 0 6px #000;
+    }
+}
+@-webkit-keyframes failure {
+    from {
+        border-color: #111 #555 #666 #222;
+    }
+    to {
+        border-color: #700 #900 #A00 #800;
+    }
+}
+@keyframes failure {
+    from {
+        border-color: #111 #555 #666 #222;
+    }
+    to {
+        border-color: #700 #900 #A00 #800;
+    }
+}
+.fade-down {
+    animation: fadeDown 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0s 1 normal both running;
+    -webkit-animation: fadeDown 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0s 1 normal both running;
+}
+.fade-up {
+    animation: fadeUp 1s linear 0s 1 normal both running;
+    -webkit-animation: fadeUp 1s linear 0s 1 normal both running;
+}
+.fade-down-paused {
+    animation: fadeDown 1s linear 0s 1 normal both paused;
+    -webkit-animation: fadeDown 1s linear 0s 1 normal both paused;
+}
+@keyframes fadeDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -2000px, 0);
+        transform: translate3d(0, -2000px, 0);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 25px, 0);
+        transform: translate3d(0, 25px, 0);
+    }
+    75% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+    90% {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0, 5px, 0);
+    }
+    100% {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+@-webkit-keyframes fadeDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -2000px, 0);
+        transform: translate3d(0, -2000px, 0);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 25px, 0);
+        transform: translate3d(0, 25px, 0);
+    }
+    75% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+    90% {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0, 5px, 0);
+    }
+    100% {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+@keyframes fadeUp {
+    20% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+    40%, 45% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 20px, 0);
+        transform: translate3d(0, 20px, 0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -2000px, 0);
+        transform: translate3d(0, -2000px, 0);
+    }
+}
+@-webkit-keyframes fadeUp {
+    20% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+    40%, 45% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 20px, 0);
+        transform: translate3d(0, 20px, 0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -2000px, 0);
+        transform: translate3d(0, -2000px, 0);
+    }
+}
